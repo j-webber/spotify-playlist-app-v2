@@ -17,12 +17,16 @@ function App() {
     setSearchResults(results.tracks.items);
   }
 
+  function clearResults() {
+    setSearchResults([]);
+  }
+
   if (!hasCode) return <Login />;
 
   return (
     <div className="App">
       <h1>Hello!</h1>
-      <SearchBar search={search} />
+      <SearchBar search={search} clearResults={clearResults} />
       <SearchResults searchResults={searchResults} />
     </div>
   );

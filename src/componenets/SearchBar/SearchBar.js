@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 
 export default function SearchBar(props) {
-  const { search } = props;
+  const { search, clearResults } = props;
   const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     if (searchInput) {
       search(searchInput);
+    } else {
+      clearResults();
     }
   }, [searchInput]);
 

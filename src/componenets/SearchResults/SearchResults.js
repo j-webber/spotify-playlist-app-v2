@@ -1,10 +1,12 @@
+import TrackList from "../TrackList/TrackList";
+
 export default function SearchResults(props) {
-  const results = props.searchResults.map((result) => (
-    <li key={result.id} id={result.id}>
-      {result.name}
-      <br />
-      {result.artists[0].name}
-    </li>
-  ));
-  return <ul>{results}</ul>;
+  const { searchResults } = props;
+
+  return (
+    <>
+      <h1>Results</h1>
+      <TrackList searchResults={searchResults} />
+    </>
+  );
 }
