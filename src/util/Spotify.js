@@ -29,11 +29,18 @@ const Spotify = {
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: params,
         });
-        const { access_token } = await response.json();
-        accessToken = access_token;
-        return accessToken;
+
+        const data = await response.json();
+
+        if (response.ok) {
+          accessToken = data.access_token;
+          return accessToken;
+        } else {
+          redirectToAuthCodeFlow(clientId);
+          throw new Error(`${data.error} ${data.error_description}`);
+        }
       } catch (error) {
-        console.error(error);
+        console.log(error);
       }
     }
   },
