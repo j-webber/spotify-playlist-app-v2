@@ -4,6 +4,8 @@ import Spotify from "../../util/Spotify";
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
+import "bootswatch/dist/slate/bootstrap.min.css";
+import "./App.css";
 
 function App() {
   const [hasCode, setHasCode] = useState(false);
