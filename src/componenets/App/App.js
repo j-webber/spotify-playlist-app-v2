@@ -30,6 +30,11 @@ function App() {
     setPlaylist((prev) => [...prev, selectedTrack[0]]);
   }
 
+  async function handleSavePlaylist(playlistName) {
+    const trackIds = playlist.map((track) => track.id);
+    await Spotify.savePlaylist(playlistName, trackIds);
+  }
+
   if (!hasCode) return <Login />;
 
   return (
@@ -40,7 +45,7 @@ function App() {
         searchResults={searchResults}
         addSelectedTrack={filterSearchResults}
       />
-      <Playlist playlist={playlist} />
+      <Playlist playlist={playlist} handleSavePlaylist={handleSavePlaylist} />
     </div>
   );
 }
