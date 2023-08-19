@@ -6,5 +6,11 @@ export default function Login() {
     Spotify.logIn();
   }
 
-  return <button onClick={handleClick}>Login</button>;
+  return (
+    <div className="mt-4 row">
+      <button onClick={handleClick} className="btn btn-secondary btn-lg">
+        Login
+      </button>
+    </div>
+  );
 }

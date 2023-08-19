@@ -17,8 +17,20 @@ export default function SearchBar(props) {
   }
 
   return (
-    <form>
-      <input type="text" value={searchInput} onChange={handleChange} />
-    </form>
+    <div className="row">
+      <div className="form-group col-8 text-start mx-auto">
+        <label for="search" className="col-form-label col-form-label-lg mt-4">
+          Search for song
+        </label>
+        <input
+          className="form-control form-control-lg"
+          type="text"
+          value={searchInput}
+          onChange={handleChange}
+          id="serach"
+          placeholder="What song do you want to add?"
+        />
+      </div>
+    </div>
   );
 }

@@ -4,7 +4,7 @@ export default function TrackList(props) {
   const { trackList, handleClick } = props;
 
   return (
-    <>
+    <div className="list-group">
       {trackList.map((result) => (
         <Track
           key={result.id}
@@ -15,6 +15,6 @@ export default function TrackList(props) {
           handleClick={handleClick}
         />
       ))}
-    </>
+    </div>
   );
 }

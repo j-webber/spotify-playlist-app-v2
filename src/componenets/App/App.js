@@ -32,22 +32,39 @@ function App() {
     setPlaylist((prev) => [...prev, selectedTrack[0]]);
   }
 
+  function removeSelectedTrack(selectedTrackId) {
+    const updatedPlaylist = playlist.filter(
+      (track) => track.id !== selectedTrackId
+    );
+    setPlaylist(updatedPlaylist);
+  }
+
   async function handleSavePlaylist(playlistName) {
     const trackIds = playlist.map((track) => track.id);
     await Spotify.savePlaylist(playlistName, trackIds);
   }
 
-  if (!hasCode) return <Login />;
-
   return (
-    <div className="App">
-      <h1>Hello!</h1>
-      <SearchBar search={search} clearResults={clearResults} />
-      <SearchResults
-        searchResults={searchResults}
-        addSelectedTrack={filterSearchResults}
-      />
-      <Playlist playlist={playlist} handleSavePlaylist={handleSavePlaylist} />
+    <div className="App container-sm pt-5 text-center">
+      <div className="row">
+        <h1 className="">Spotify Playlist Maker</h1>
+      </div>
+      <div>
+        <>
+          <SearchBar search={search} clearResults={clearResults} />
+          <div className="row mt-5 mb-5">
+            <SearchResults
+              searchResults={searchResults}
+              addSelectedTrack={filterSearchResults}
+            />
+            <Playlist
+              playlist={playlist}
+              handleSavePlaylist={handleSavePlaylist}
+              removeSelectedTrack={removeSelectedTrack}
+            />
+          </div>
+        </>
+      </div>
     </div>
   );
 }
